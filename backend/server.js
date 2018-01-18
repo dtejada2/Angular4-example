@@ -7,6 +7,8 @@ var app = express()
 
 var User = require('./models/User.js')
 
+mongoose.Promise = Promise
+
 var posts = [
     {message: 'hello'},
     {message: 'hi'}

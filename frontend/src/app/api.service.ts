@@ -1,5 +1,6 @@
 import { Http } from '@angular/http'
 import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService {
@@ -18,5 +19,9 @@ export class ApiService {
         this.http.get('http://localhost:3000/users').subscribe(res => {
             this.users = res.json()
         })
+    }
+
+    getProfile(id) : Observable<any>  {
+        return this.http.get('http://localhost:3000/profile/' + id);
     }
 }
