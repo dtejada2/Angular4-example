@@ -29,6 +29,16 @@ app.get('/users', async (req,res) => {
     }
 })
 
+app.get('/profile/:id', async (req,res) => {
+    try {
+        var user = await User.findById(req.params.id, '-password -__v')
+        res.send(user)
+    } catch (error) {
+        console.error(error);
+       res.sendStatus(500);
+    }
+})
+
 app.post('/register', (req,res) => {
     var userData = req.body;
     var user = new User(userData)
