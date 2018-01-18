@@ -9,3 +9,7 @@ Project created in order to implement severals Javascript frameworks
 4.	mongodb
 5.  cors
 6.  Material design 
+
+# Database url
+
+**https://mlab.com/databases/pssocial/collections/models**
