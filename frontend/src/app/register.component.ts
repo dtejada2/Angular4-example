@@ -1,40 +1,22 @@
 import { ApiService } from './api.service';
 import { Component } from '@angular/core';
+import { AuthService } from 'app/auth.service';
 
 @Component({
-  selector: 'register',
-  template: `
-    <md-card>
-        <md-card-header>
-            <md-card-title>
-                <h4>Register new user</h4>
-            </md-card-title>
-        </md-card-header>
-        <md-card-content>
-            <form>
-                <md-input-container>
-                    <input [(ngModel)]="registerData.Email" name="Email" mdInput placeholder="email" type="email">
-                </md-input-container>
-                <md-input-container>
-                    <input [(ngModel)]="registerData.password" name="password" mdInput placeholder="password" type="password">
-                </md-input-container>
-                <button (click)="post()" md-raised-button color="primary" >Registre</button>
-            </form>
-        </md-card-content>
-    </md-card>
-  `
+    selector: 'register',
+    templateUrl: 'register.component.html'
 })
 export class RegisterComponent {
     registerData = {
 
     }
 
-    constructor(private apiService: ApiService) {
+    constructor(private authService: AuthService) {
     }   
 
     post(){
         console.log(this.registerData);
-        this.apiService.sendUserregistration(this.registerData);
+        this.authService.registerUser(this.registerData);
     }
 }
 
