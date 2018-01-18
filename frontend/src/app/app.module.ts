@@ -12,15 +12,17 @@ import { AuthService } from './auth.service'
 import { MessagesComponent } from './messages.component'
 import { RegisterComponent } from './register.component';
 import { LoginComponent } from './login.component';
+import { UsersComponent } from './users.component';
 
 const routes= [
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'users', component: UsersComponent}
 ]
 
 @NgModule({
   declarations: [
-    AppComponent, MessagesComponent, RegisterComponent,LoginComponent
+    AppComponent, MessagesComponent, RegisterComponent,LoginComponent,UsersComponent
   ],
   imports: [
     BrowserModule, 
