@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { ApiService } from './api.service'
 
@@ -5,14 +6,16 @@ import { ApiService } from './api.service'
     selector: 'messages',
     template: `
         <div *ngFor="let message of apiService.messages">
-          <md-card>{{message.message}}</md-card>
+          <md-card>{{message.msg}}</md-card>
         </div>
     `
 })
 export class MessagesComponent {
-    constructor(private apiService: ApiService) { }
+    constructor(private apiService: ApiService,
+                private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        this.apiService.getMessages();
+        var userId = this.activatedRoute.snapshot.params.id;
+        this.apiService.getMessages(userId);
     }
 }
