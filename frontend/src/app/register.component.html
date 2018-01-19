@@ -12,6 +12,15 @@
             <md-input-container>
                 <input [(ngModel)]="registerData.password" name="password" mdInput placeholder="password" type="password">
             </md-input-container>
+            <br>
+            <md-input-container>
+                <input [(ngModel)]="registerData.name" name="name" mdInput placeholder="name">
+            </md-input-container>
+            <br>
+            <md-input-container style="width:100%">
+                <textarea [(ngModel)]="registerData.description" name="description" mdInput placeholder="description"></textarea>
+            </md-input-container>
+            
             <button (click)="post()" md-raised-button color="primary" >Registre</button>
         </form>
     </md-card-content>

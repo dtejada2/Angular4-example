@@ -12,8 +12,9 @@ import { ActivatedRoute } from '@angular/router';
         </md-card-header>
         <md-card-content>
            <md-list>
-                <md-list-item>Name: Tim</md-list-item>
+                <md-list-item>Name: {{profile.name}}</md-list-item>
                 <md-list-item>Email: {{profile.Email}}</md-list-item>
+                <md-list-item>Description: {{profile.description}}</md-list-item>
            </md-list>
         </md-card-content>
     </md-card>
