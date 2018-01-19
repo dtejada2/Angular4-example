@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {
           MdButtonModule, 
@@ -12,6 +11,7 @@ import {
         } from '@angular/material'
 
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component'
 import { ApiService } from './api.service'
@@ -43,7 +43,6 @@ const routes= [
   ],
   imports: [
     BrowserModule, 
-    HttpModule, 
     MdButtonModule, 
     MdCardModule, 
     MdToolbarModule, 
@@ -51,7 +50,8 @@ const routes= [
     MdInputModule,
     MdListModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ApiService,AuthService],
   bootstrap: [AppComponent]
