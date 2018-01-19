@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <md-toolbar>
-    PSSocial
+    <button md-button routerLink="/">PSSocial</button>
     <button md-button routerLink="/users">Users</button>
     <span style="flex: 1 1 auto"></span>
     <button md-button routerLink="/register">Register</button>
