@@ -10,8 +10,12 @@ export class AuthService {
 
     constructor( private http: HttpClient) {}
 
-    getToken(){
+    get Token(){
         return localStorage.getItem(this.TOKEN_KEY);
+    }
+
+    get isAuthenticated(){
+        return !!localStorage.getItem(this.TOKEN_KEY)
     }
 
     registerUser(registerData) {
