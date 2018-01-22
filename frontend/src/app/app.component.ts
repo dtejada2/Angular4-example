@@ -5,10 +5,12 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <mat-toolbar>
-    <button mat-button routerLink="/">PSSocial</button>
-    <button mat-button routerLink="/users">Users</button>
-    <span style="flex: 1 1 auto"></span>
-    <button mat-button *ngIf="!authService.isAuthenticated" routerLink="/register">Register</button>
+      <button mat-button routerLink="/">PSSocial</button>
+      <button mat-button routerLink="/users">Users</button>
+      <span style="flex: 1 1 auto"></span>
+      <button mat-button *ngIf="!authService.isAuthenticated" routerLink="/register">Register</button>
+      <button mat-button *ngIf="!authService.isAuthenticated" routerLink="/login">Login</button>
+      <button mat-button *ngIf="authService.isAuthenticated" (click)="authService.logout()">Logout</button>
     </mat-toolbar>
     <router-outlet></router-outlet>
   `,
@@ -17,9 +19,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'my app';
 
-  constructor(private authService: AuthService) {
-
-  }
-
-
+  constructor(private authService: AuthService) {}
 }

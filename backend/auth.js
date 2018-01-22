@@ -7,13 +7,22 @@ var router = express.Router()
 router.post('/register', (req, res) => {
     var userData = req.body;
     var user = new User(userData)
-    user.save((err, result) => {
+    user.save((err, newUser) => {
         if (err)
-            console.log('save user error')
+            return res.status(500).send({ message: "Error saving user" })
 
-        res.sendStatus(200);
+        this.createSendToken(res, newUser);
     })
 });
+
+function createSendToken(res, user) {
+    var payload = { sub: user._id }
+
+    var token = jwt.encode(payload, '123', );
+
+    res.status(200).send({ token: token });
+}
+
 
 router.post('/login', async (req, res) => {
     var loginData = req.body;
@@ -27,13 +36,7 @@ router.post('/login', async (req, res) => {
         if (!isMatch)
             return res.status(401).send({ message: "Email or Password invalid" })
 
-        var payload = {
-            sub: user._id 
-        }
-
-        var token = jwt.encode(payload, '123', );
-
-        res.status(200).send({ token: token });
+        this.createSendToken(res, user);
     })
 });
 
