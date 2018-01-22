@@ -2,6 +2,7 @@ var express = require('express')
 var cors = require('cors')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
+var jwt = require('jwt-simple')
 
 var app = express()
 
@@ -13,6 +14,22 @@ mongoose.Promise = Promise
 
 app.use(cors())
 app.use(bodyParser.json())
+
+function checkAuthenticated(req, res, next) {
+    if(!req.header('authorization'))
+        return res.status(401).send({message: 'Unauthorized Auth Header'})
+
+    var token  = req.header('authorization').split(' ')[1]
+
+    var payload =  jwt.decode(token, '123')
+
+    if(!payload)
+        return res.status(401).send({message: 'Unauthorized Auth Invalid'})
+
+    req.userId = payload.sub
+
+    next()
+}
 
 app.get('/posts/:id', async (req,res) => {
     var author= req.params.id
@@ -36,8 +53,9 @@ app.post('/post', (req,res) => {
     })
 })
 
-app.get('/users', async (req,res) => {
+app.get('/users',auth.checkAuthenticated, async (req,res) => {
     try {
+        console.log(req.userId)
         var users = await User.find({}, '-password -__v')
         res.send(users)
     } catch (error) {
@@ -61,6 +79,6 @@ mongoose.connect('mongodb://dtejada:Daniel89@ds261917.mlab.com:61917/pssocial',{
         console.log('connected to mongo')
 })
 
-app.use('/auth', auth)
+app.use('/auth', auth.router)
 
 app.listen(3000)
