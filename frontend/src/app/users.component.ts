@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     selector: 'users',
     template: `
     <div *ngFor="let user of apiService.users">
-        <md-card [routerLink]="['/profile',user._id]" style="cursor: pointer">{{user.name}}</md-card>
+        <mat-card [routerLink]="['/profile',user._id]" style="cursor: pointer">{{user.name}}</mat-card>
     </div>
     `
 })

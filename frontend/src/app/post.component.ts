@@ -4,22 +4,22 @@ import { ApiService } from './api.service'
 @Component({
     selector: 'post',
     template: `
-    <md-card>
-        <md-card-header>
-            <md-card-title>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
                 <h4>New Post user</h4>
-            </md-card-title>
-        </md-card-header>
-        <md-card-content>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
             <form>
-                <md-input-container style="width:100%">
-                    <textarea [(ngModel)]="postMsg" name="description" mdInput placeholder="Post Message"></textarea>
-                </md-input-container>
+                <mat-input-container style="width:100%">
+                    <textarea [(ngModel)]="postMsg" name="description" matInput placeholder="Post Message"></textarea>
+                </mat-input-container>
                 
-                <button (click)="post()" md-raised-button color="primary" >Post</button>
+                <button (click)="post()" mat-raised-button color="primary" >Post</button>
             </form>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
     `
 })
 export class PostComponent {

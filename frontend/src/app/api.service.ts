@@ -16,7 +16,7 @@ export class ApiService {
     }
 
     postMessage(message) {
-        this.http.post(this.path + '/post', message).subscribe(res => {
+        this.http.post<any>(this.path + '/post', message).subscribe(res => {
         })
     }
 
@@ -26,7 +26,7 @@ export class ApiService {
         })
     }
 
-    getProfile(id) : Observable<any>  {
-        return this.http.get(this.path + '/profile/' + id);
+    getProfile(id) {
+        return this.http.get<any>(this.path + '/profile/' + id);
     }
 }
