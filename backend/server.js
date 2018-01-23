@@ -5,6 +5,7 @@ var mongoose = require('mongoose')
 var jwt = require('jwt-simple')
 
 var app = express()
+var router = express.Router();
 
 var User = require('./models/User.js')
 var Post = require('./models/Post.js')
@@ -21,7 +22,7 @@ app.get('/posts/:id', async (req,res) => {
     res.send(posts)
 })
 
-app.post('/post',auth.checkAuthenticated, (req,res) => {
+app.post('/post', auth.checkAuthenticated, (req,res) => {
     var postData = req.body
     postData.author = req.userId
 
@@ -57,7 +58,7 @@ app.get('/profile/:id', async (req,res) => {
     }
 })
 
-mongoose.connect('mongodb://dtejada:Daniel89@ds261917.mlab.com:61917/pssocial',{useMongoCLient: true}, (error)=>{
+mongoose.connect('mongodb://dtejada:Daniel89@ds261917.mlab.com:61917/pssocial', (error)=>{
     if(!error)
         console.log('connected to mongo')
 })

@@ -11,7 +11,7 @@ router.post('/register', (req, res) => {
         if (err)
             return res.status(500).send({ message: "Error saving user" })
 
-        this.createSendToken(res, newUser);
+        createSendToken(res, newUser);
     })
 });
 
@@ -36,16 +36,17 @@ router.post('/login', async (req, res) => {
         if (!isMatch)
             return res.status(401).send({ message: "Email or Password invalid" })
 
-        this.createSendToken(res, user);
+        createSendToken(res, user);
     })
 });
 
 var auth = {
     router,
     checkAuthenticated: (req, res, next) => {
-        if(!req.header('authorization'))
+        
+        if(!req.header('authorization') || req.header('authorization').split(' ')[1] == 'null')
             return res.status(401).send({message: 'Unauthorized Auth Header'})
-    
+
         var token  = req.header('authorization').split(' ')[1]
     
         var payload =  jwt.decode(token, '123')
