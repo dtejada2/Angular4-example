@@ -58,7 +58,7 @@ app.get('/profile/:id', async (req,res) => {
     }
 })
 
-mongoose.connect('mongodb://dtejada:Daniel89@ds261917.mlab.com:61917/pssocial', (error)=>{
+mongoose.connect('mongodb://user:password@ds261917.mlab.com:61917/pssocial', (error)=>{
     if(!error)
         console.log('connected to mongo')
 })
