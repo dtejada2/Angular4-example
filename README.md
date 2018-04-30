@@ -1,5 +1,5 @@
 # Introduction 
-Project created in order to implement severals Javascript frameworks
+Project created in order to implement severals Javascript frameworks combined
 
 # Tecnologies
 
